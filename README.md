@@ -3,5 +3,4 @@
 
 #ソースコードはmasterブランチにあります
 
-GoogleKeepのURL↓
-#https://keep.google.com/
+GoogleKeepのURL https://keep.google.com/
