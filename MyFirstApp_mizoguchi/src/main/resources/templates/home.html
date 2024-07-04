@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+	
+	<p th:text="${ 'ようこそ' + login + 'さん'}"></p>
+	<form th:action="@{/userHome}" method="POST">
+		つぶやく
+		<input type="text" name="tubuyaku"><br>
+		<input type="submit" value="投稿"> 
+	</form>
+	<hr>
+	
+	<p>投稿内容</p>
+	<p th:text="${toukou}"></p>
+	<a href="http://localhost:8080/userLogin">ログイン画面</a>
+</body>
+</html>

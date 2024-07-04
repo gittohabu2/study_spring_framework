@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h4>予約回数ランキング</h4>
+<table>
+	<tr>
+		<th>順位</th>
+		<th>予約者名</th>
+		<th>予約回数</th>
+	</tr>
+	<tr th:each="singledata:${kensakupra}">
+		<td><p th:text=${singledata.ranking}></p></td>
+		<td><p th:text=${singledata.yoyakuname}></p></td>
+		<td><p th:text=${singledata.yoyakucount}></p></td>
+	</tr>
+</table>
+
+</body>
+</html>

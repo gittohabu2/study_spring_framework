@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	
+	<h3>第3回制作課題</h3>
+	
+	<th:block th:if="${session.userid == null}">
+	<form th:action="@{/sheetLogin}" method="POST">
+	ID<input type="text" name="id"><br>
+	PASS<input type="text" name="pass"><br>
+	<input type="submit" value="ログイン">
+	</form>
+	</th:block>
+
+	<th:block th:if="${session.userid != null}">
+	<form th:action="@{/sheetIns}" method="POST">
+	<h4>＜予約情報を入力してください＞</h4>
+	予約番号<input type="text" name="number"><br>
+    予約日<input type="text" name="day"><br>
+    <input type="submit" value="予約">
+    </form>
+	<hr>
+	<h4>＜予約一覧＞</h4>
+	<form th:action="@{/sheetSer}" method="POST">
+		予約者名<input type="text" name="name">
+		<input type="submit" value="検索">
+	<table>
+		<tr>
+			<th>予約番号</th>
+			<th>予約日</th>
+			<th>予約者名</th>
+		</tr>
+		<tr th:each="singledata:${kensakupra}">
+				<td><p th:text=${singledata.yoyakubango}></p></td>
+				<td><p th:text=${singledata.yoyakubi}></p></td>
+				<td><p th:text=${singledata.yoyakuname}></p></td>
+		</tr>
+	</table>
+	</form>
+	
+	<a href="http://localhost:8080/reservmypage">マイページ</a>
+	<a href="http://localhost:8080/reservranking">予約回数ランキング</a>
+	<a href="http://localhost:8080/reservmodify">編集・削除</a>
+	
+	</th:block>
+
+</body>
+
+</html>

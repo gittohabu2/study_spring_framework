@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:if="${yoyakujokyo == '予約不可'}">
+	<script type="text/javascript" src="js/kokusaidome.js"></script>
+</th:block>
+</head>
+<body>
+	
+<form th:action="@{/kokusaidomeSer}" method="POST">
+	<input type="text" name="keyward">
+	<input type="submit" value="送信">
+	<table>
+	<tr>
+		<th>予約日</th><th>予約クラス</th><th>予約者名</th><th>予約コート</th>
+	</tr>
+	<tr th:each="yoyakuListSer:${session.kensakauListSer}">
+		<td><p th:text="${yoyakuListSer.yoyakubi}"></p></td>
+		<td><p th:text="${yoyakuListSer.yoyakuclass}"></p></td>
+		<td><p th:text="${yoyakuListSer.yoyakuname}"></p></td>
+		<td><p th:text="${yoyakuListSer.yoyakucoat}"></p></td>
+	</tr>
+</table>
+</form>
+
+<form th:action="@{/kokusaidomeIns}" method="POST">
+	<h4>予約</h4>
+	予約日<input type="text" name="yoyakubi">
+	予約クラス<input type="text" name="yoyakuclass">
+	予約者名<input type="text" name="yoyakuname">
+	バスケorバレー<input type="text" name="yoyakucoat">
+	<input type="submit" value="送信">
+</form>
+
+<form th:action="@{/kokusaidomeUpd}" method="POST">
+	<h4>予約日の変更(登録者名＆予約日で絞り込み)</h4>
+	登録者名<input type="text" name="yoyakuname">
+	予約日(変更前)<input type="text" name="yoyakubi1">
+	予約日(変更後)<input type="text" name="yoyakubi2">
+	<input type="submit" value="送信">
+</form>
+
+<form th:action="@{/kokusaidomeDel}" method="POST">
+	<h4>データの削除(登録者名＆予約日で指定、「全削除」を入力でデータ全削除)</h4>
+	登録者名<input type="text" name="yoyakuname">
+	予約日<input type="text" name="yoyakubi">
+	<input type="submit" value="送信">
+</form>
+
+</body>
+</html>

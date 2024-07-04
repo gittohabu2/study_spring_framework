@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	
+	<h4>DB連携！</h4>
+	
+	<h3>個人演習</h3>
+	
+	<h4>練習問題①</h4>
+	画面最下部の「検索結果」の部分に全部のデータが表示されるようにしてね。
+	<hr>
+	<h4>↓検索欄↓</h4>
+	<form th:action="@{/fourthsoloSer}" method="POST">
+		会社名or業種<br>
+		<input type="text" name="compname">
+		<input type="submit">
+	</form>
+	<h4>↓データ登録欄↓</h4>
+	<form th:action="@{/fourthsoloIns}" method="POST">
+		会社名<br>
+		<input type="text" name="compname"><br>
+		従業員数<br>
+		<input type="text" name="compemp"><br>
+		業種<br>
+		<input type="text" name="compgyoshu">
+		<input type="submit">
+	</form>
+	<h4>↓データ更新欄↓</h4>
+	<form th:action="@{/fourthsoloUpd}" method="POST">
+		会社名(指定)<br>
+		<input type="text" name="compname"><br>
+		従業員数(変更)<br>
+		<input type="text" name="compemp"><br>
+		業種(変更)<br>
+		<input type="text" name="compgyoshu">
+		<input type="submit">
+	</form>
+	<h4>↓データ削除欄↓</h4>
+	<form th:action="@{/fourthsoloDel}" method="POST">
+		会社名<input type="text" name="compname">
+		<input type="submit">
+	</form>
+	<h4>↓検索結果↓</h4>
+	<table>
+		<tr>
+			<th>会社名</th>
+			<th>従業員数</th>
+			<th>業種</th>
+		</tr>
+		<tr th:each="singledata:${kensakupra}">
+				<td><p th:text=${singledata.compname}></p></td>
+				<td><p th:text=${singledata.compemp}></p></td>
+				<td><p th:text=${singledata.compgyoshu}></p></td>
+		</tr>
+	</table>
+
+</body>
+
+</html>

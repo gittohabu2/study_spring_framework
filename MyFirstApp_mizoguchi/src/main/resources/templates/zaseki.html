@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/zaseki.css">
+<th:block th:if="${tyouhuku == '重複'}">
+	<script type="text/javascript" src="js/zaseki.js"></script>
+</th:block>
+</head>
+<body>
+
+<th:block th:if="${session.userid == null || login == 'login'}">
+<h1>ログインしてください</h1>
+<form th:action="@{/zasekiyoyaku}" method="POST">
+	ID
+	<input type="text" name="id">
+	PASS
+	<input type="text" name="pass">
+	<input type="submit" value="決定">
+</form>
+</th:block>
+
+
+<th:block th:if="${session.menu == null}">
+<th:block th:if="${session.userid != null}">
+    <h2 th:text="${session.userid + 'さんようこそ'}"></h1>
+</th:block>
+<h2>操作を入力してください</h2>
+<form th:action="@{/zasekiyoyaku}" method="POST">
+	<input type="text" name="menu">
+	<input type="submit" value="決定">
+</form>
+</th:block>
+
+
+<th:block th:if="${session.menu == '予約'}">
+	<h2>予約したい座席番号を1～10で入力してください</h2>
+	<form th:action="@{/zasekiyoyaku}" method="POST">
+		<input type="text" name="yoyaku">
+	    <input type="submit" value="決定">
+	</form>
+</th:block>
+
+
+<th:block th:if="${session.menu == '参照'}">
+	<h2>現在の予約状況</h2>
+	<p>＜予約済み＞</p>
+	<ul>
+		<li th:each="zaseki:${session.userList}" th:text="${zaseki + '番を予約しました'}"></li>
+	</ul>
+</th:block>
+
+
+<th:block th:if="${session.menu == 'まとめて予約'}">
+	<h2>予約したい番号の範囲の始めと終わりを入力してください</h2>
+	<form th:action="@{/zasekiyoyaku}" method="POST">
+		始め
+		<input type="text" name="matomete1">
+		終わり
+		<input type="text" name="matomete2">
+		<input type="submit" value="決定">
+	</form>
+</th:block>
+
+
+<th:block th:if="${session.menu == '取消'}">
+	<h2>取り消したい番号を入力してください(11は全削除)</h2>
+	<form th:action="@{/zasekiyoyaku}" method="POST">
+		<input type="text" name="torikesi">
+		<input type="submit" value="決定">
+	</form>
+</th:block>
+
+<th:block th:if="${login != 'login'}">
+<form th:action="@{/zasekiyoyaku}" method="GET" class="login">
+	<input type="submit" value="ログイン画面に戻る">
+</form>
+</th:block>
+
+</body>
+</html>

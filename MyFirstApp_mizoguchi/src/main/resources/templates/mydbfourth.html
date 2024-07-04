@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	
+	<h4>DB連携！</h4>
+	
+	<h3>個人演習</h3>
+	
+	<h4>練習問題①</h4>
+	画面最下部の「検索結果」の部分に全部のデータが表示されるようにしてね。
+	<hr>
+	<h4>↓検索欄↓</h4>
+	<form th:action="@{/mydbfourthpra}" method="POST">
+		名前<input type="text" name="sikaku">
+		<input type="submit">
+	</form>
+	<h4>↓データ登録欄↓</h4>
+	<form th:action="@{/fourthpraIns}" method="POST">
+		名前<input type="text" name="cername">
+		ランク<input type="text" name="cerrank">
+		<input type="submit">
+	</form>
+	<h4>↓データ更新欄↓</h4>
+	<form th:action="@{/fourthpraUpd}" method="POST">
+		名前<input type="text" name="cername">
+		ランク<input type="text" name="cerrank">
+		<input type="submit">
+	</form>
+	<h4>↓データ削除欄↓</h4>
+	<form th:action="@{/fourthpraDel}" method="POST">
+		名前<input type="text" name="cername">
+		<input type="submit">
+	</form>
+	<h4>↓検索結果↓</h4>
+	<table>
+		<tr>
+			<th>会社名</th>
+			<th>従業員数</th>
+		</tr>
+		<tr th:each="singledata:${kensakupra}">
+				<td><p th:text=${singledata.sikakuname}></p></td>
+				<td><p th:text=${singledata.sikakurank}></p></td>
+		</tr>
+	</table>
+
+</body>
+
+</html>

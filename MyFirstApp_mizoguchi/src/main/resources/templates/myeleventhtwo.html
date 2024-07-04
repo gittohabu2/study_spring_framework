@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h4>第11回 model & sessionについて</h4>
+	<h4>2ページ目</h4>
+	
+	<th:block th:if="${session.userDataId != null && session.userId2 == null && session.userId3 == null}">
+		<p th:text="${'最後にログインしたのは' + session.userDataId + 'さんです。'}"></p>
+	</th:block>
+	<th:block th:if="${session.userDataId != null && session.userId2 != null && session.userId3 == null}">
+		<p th:text="${'最後にログインしたのは' + session.userDataId2 + 'さんです。
+		その前にログインしたのは' + session.userDataId + 'さんです。'}"></p>
+	</th:block>
+	<th:block th:if="${session.userDataId != null && session.userId2 != null && session.userId3 != null}">
+		<p th:text="${'最後にログインしたのは' + session.userDataId3 + 'さんです。
+		その前にログインしたのは' + session.userDataId2 + 'さんです。
+		さらに前は' + session.userDataId + 'さんです。'}"></p>
+	</th:block>
+	
+	<h3>モデルにしまったデータ</h3>
+	<p th:text="${modelData}"></p>
+	
+	<h3>セッションにしまったデータ</h3>
+	<p th:text="${session.sessionData}"></p>
+	<p th:text="${session.sessionData2}"></p>
+	
+	<a href="http://localhost:8080/elevenpageone">1ページ目に戻る</a>
+	
+</body>
+</html>

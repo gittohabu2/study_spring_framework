@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:if="${error == 'エラー'}">
+	<script type="text/javascript" src="js/kokusaiclasskousin.js"></script>
+</th:block>
+</head>
+<body>
+
+<form th:action="@{/classupd}" method="POST">
+	
+<h4>更新前クラス</h4>
+<input type="text" name="before">
+<h4>更新後クラス</h4>
+<input type="text" name="after">
+<input type="submit" value="送信">
+
+
+<table>
+	<tr>
+		<th>ID</th><th>名前</th><th>クラス</th>
+	</tr>
+	<tr th:each="classList:${session.classList}">
+		<td><p th:text="${classList.user_id}"></p></td>
+		<td><p th:text="${classList.user_name}"></p></td>
+		<td><p th:text="${classList.class}"></p></td>
+	</tr>
+</table>
+
+</form>
+
+</body>
+</html>

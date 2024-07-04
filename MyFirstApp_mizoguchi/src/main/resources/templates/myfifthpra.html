@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/myfifthpra.css">
+<script type="text/javascript" src="js/myfifthpra.js"></script>
+</head>
+<body>
+	
+	<p th:text="${modelpra}"></p>
+	
+	<form th:action="@{/fifthpra}" method="POST">
+		好きな食べ物
+		<input type="text" name="like">
+		<input type="submit" value="送信">
+	</form>
+	
+	<p th:text="${likefood}">だー！！！</p>
+
+</body>
+</html>

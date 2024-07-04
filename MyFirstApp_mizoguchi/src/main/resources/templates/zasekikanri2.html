@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form th:action="@{/sheetUpd}" method="POST">
+<h4><変更する予約情報を入力してください(ログインしてるユーザー名に変更)></h4>
+予約番号(指定)<input type="text" name="number">
+<input type="submit" value="変更">
+</form>
+
+<form th:action="@{/sheetDel}" method="POST">
+<h4><削除する予約情報を入力してください></h4>
+予約番号<input type="text" name="number">
+<input type="submit" value="削除">
+</form>
+
+<a href="http://localhost:8080/sheetreserv">登録・一覧</a>
+
+</body>
+</html>

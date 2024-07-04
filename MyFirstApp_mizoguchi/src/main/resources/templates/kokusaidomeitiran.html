@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h4>予約一覧</h4>
+
+<table>
+	<tr>
+		<th>予約日</th><th>予約クラス</th><th>予約者名</th><th>予約コート</th>
+	</tr>
+	<tr th:each="yoyakuList:${session.yoyakuList}">
+		<td><p th:text="${yoyakuList.yoyakubi}"></p></td>
+		<td><p th:text="${yoyakuList.yoyakuclass}"></p></td>
+		<td><p th:text="${yoyakuList.yoyakuname}"></p></td>
+		<td><p th:text="${yoyakuList.yoyakucoat}"></p></td>
+	</tr>
+</table>
+
+<form th:action="@{/kokusaidome2}" method="GET">
+	<input type="submit" value="予約操作画面へ">
+</form>
+</body>
+</html>
